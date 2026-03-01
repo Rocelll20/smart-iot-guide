@@ -48,11 +48,11 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex items-center gap-4 text-white/70 font-bold ml-2">
-              <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
+              {/* <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
                 <User size={16} />
                 <span className="text-sm font-bold hidden sm:block mt-0.5">Sign In</span>
-              </div>
-              <button className="hover:text-white transition-colors ml-2"><Settings size={16} /></button>
+              </div> */}
+              {/* <button className="hover:text-white transition-colors ml-2"><Settings size={16} /></button> */}
               <button className="hover:text-white transition-colors"><Bell size={16} /></button>
             </div>
           </div>
@@ -168,67 +168,76 @@ export default function Dashboard() {
             {/* Orders Overview */}
             <div className="lg:col-span-4 bg-card rounded-2xl p-6 shadow-2xl border border-white/5 relative flex flex-col pt-8">
               <h3 className="font-bold text-lg tracking-wide">History Overview</h3>
-              <p className="text-white/50 text-sm font-bold mt-2 mb-10 tracking-wide"><span className="text-[#01b574]">+30%</span> this month</p>
+              <p className="text-white/50 text-sm font-bold mt-2 mb-10 tracking-wide"><span className="text-[#01b574]"></span> this month</p>
 
-              {/* History Overview */}
+    {/* History Overview */}
 
-              <div className="relative flex-1 mt-2 px-2">
-                {/* Timeline items match Vision UI */}
-                <div className="flex gap-5 mb-8">
-                  <div className="flex flex-col items-center relative">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-[#1b71e1] bg-transparent z-10 shrink-0 mt-1"></div>
-                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-                  </div>
-                  <div className="pb-1 mt-[-2px]">
-                    <p className="text-sm font-bold m-0 leading-tight tracking-wide text-[#1b71e1]">$2400, Design changes</p>
-                    <p className="text-[10px] text-white/50 font-bold mt-2 tracking-widest uppercase">22 DEC 7:20 PM</p>
-                  </div>
-                </div>
+    <div className="relative flex-1 mt-2 px-2">
 
-                <div className="flex gap-5 mb-8">
-                  <div className="flex flex-col items-center relative">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-[#ee3158] bg-transparent z-10 shrink-0 mt-1"></div>
-                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-                  </div>
-                  <div className="pb-1 mt-[-2px]">
-                    <p className="text-sm font-bold m-0 leading-tight tracking-wide text-white/90">New order #4219423</p>
-                    <p className="text-[10px] text-white/50 font-bold mt-2 tracking-widest uppercase">21 DEC 11:21 PM</p>
-                  </div>
-                </div>
+     {/* Location Update */}
+      <div className="flex gap-5 mb-8">
+      <div className="flex flex-col items-center relative">
+      <div className="w-2.5 h-2.5 rounded-full border-2 border-teal-500 bg-transparent z-10 mt-1"></div>
+      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
+    </div>
+    <div className="pb-1 mt-[-2px]">
+      <p className="text-sm font-bold text-white/90">
+        Location updated – Cagayan de Oro City
+      </p>
+      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
+        Today 2:15 PM
+      </p>
+    </div>
+  </div>
 
-                <div className="flex gap-5 mb-8">
-                  <div className="flex flex-col items-center relative">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-primary bg-transparent z-10 shrink-0 mt-1"></div>
-                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-                  </div>
-                  <div className="pb-1 mt-[-2px]">
-                    <p className="text-sm font-bold m-0 leading-tight tracking-wide text-white/90">Server Payments for April</p>
-                    <p className="text-[10px] text-white/50 font-bold mt-2 tracking-widest uppercase">21 DEC 9:28 PM</p>
-                  </div>
-                </div>
+  {/* Emergency Alert */}
+  <div className="flex gap-5 mb-8">
+    <div className="flex flex-col items-center relative">
+      <div className="w-2.5 h-2.5 rounded-full border-2 border-red-500 bg-transparent z-10 mt-1"></div>
+      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
+    </div>
+    <div className="pb-1 mt-[-2px]">
+      <p className="text-sm font-bold text-red-400">
+        Emergency button activated
+      </p>
+      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
+        Yesterday 6:42 PM
+      </p>
+    </div>
+  </div>
 
-                <div className="flex gap-5 mb-8">
-                  <div className="flex flex-col items-center relative">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-orange-400 bg-transparent z-10 shrink-0 mt-1"></div>
-                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-                  </div>
-                  <div className="pb-1 mt-[-2px]">
-                    <p className="text-sm font-bold m-0 leading-tight tracking-wide text-white/90">New card added for order #3210145</p>
-                    <p className="text-[10px] text-white/50 font-bold mt-2 tracking-widest uppercase">20 DEC 3:52 PM</p>
-                  </div>
-                </div>
+  {/* Device Status */}
+  {/* <div className="flex gap-5 mb-8">
+    <div className="flex flex-col items-center relative">
+      <div className="w-2.5 h-2.5 rounded-full border-2 border-yellow-400 bg-transparent z-10 mt-1"></div>
+      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
+    </div>
+    <div className="pb-1 mt-[-2px]">
+      <p className="text-sm font-bold text-white/90">
+        Device battery low (15%)
+      </p>
+      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
+        Dec 1 4:10 PM
+      </p>
+    </div>
+  </div> */}
 
-                <div className="flex gap-5">
-                  <div className="flex flex-col items-center relative">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-primary bg-transparent z-10 shrink-0 mt-1"></div>
-                  </div>
-                  <div className="pb-1 mt-[-2px]">
-                    <p className="text-sm font-bold m-0 leading-tight tracking-wide text-white/90">Unlock packages for Development</p>
-                    <p className="text-[10px] text-white/50 font-bold mt-2 tracking-widest uppercase">19 DEC 11:35 PM</p>
-                  </div>
-                </div>
+  {/* Device Offline */}
+  {/* <div className="flex gap-5">
+    <div className="flex flex-col items-center relative">
+      <div className="w-2.5 h-2.5 rounded-full border-2 border-gray-400 bg-transparent z-10 mt-1"></div>
+    </div>
+    <div className="pb-1 mt-[-2px]">
+      <p className="text-sm font-bold text-white/90">
+        Device went offline
+      </p>
+      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
+        Nov 30 11:35 PM
+      </p>
+    </div>
+  </div> */}
 
-              </div>
+</div>
 
               {/* Fade out bottom overlay */}
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card to-transparent pointer-events-none"></div>
