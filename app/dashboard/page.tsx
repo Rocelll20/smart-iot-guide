@@ -50,7 +50,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-4 text-white/70 font-bold ml-2">
               <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
                 <User size={16} />
-                <span className="text-sm font-bold hidden sm:block mt-0.5">Sign In</span>
+                <span className="text-sm font-bold hidden sm:block mt-0.5">Emergency</span>
               </div>
               <button className="hover:text-white transition-colors ml-2"><Settings size={16} /></button>
               <button className="hover:text-white transition-colors"><Bell size={16} /></button>
