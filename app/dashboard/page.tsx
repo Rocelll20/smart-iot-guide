@@ -1,39 +1,83 @@
-"use client"
-import Sidebar from '@/components/ui/sidebar';
-import dynamic from 'next/dynamic';
-import { useMemo } from 'react';
-import { Menu, Search, Settings, Bell, User, Wallet, Users, FileText, ShoppingCart, CheckCircle2, MoreHorizontal, LayoutDashboard, Clock, UserCheck, UserPlus, ShieldCheck, TrendingUp } from 'lucide-react';
+"use client";
+
+import Sidebar from "@/components/ui/sidebar";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
+import {
+  Menu,
+  Search,
+  Settings,
+  Bell,
+  User,
+  Wallet,
+  Users,
+  FileText,
+  ShoppingCart,
+  CheckCircle2,
+  MoreHorizontal,
+  LayoutDashboard,
+  Clock,
+  UserCheck,
+  UserPlus,
+  ShieldCheck,
+  TrendingUp,
+} from "lucide-react";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-montserrat",
+});
 
 const ArrowRight = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
     <path d="M5 12h14"></path>
     <path d="m12 5 7 7-7 7"></path>
   </svg>
 );
 
 export default function Dashboard() {
-  const Map = useMemo(() => dynamic(
-    () => import('@/components/ui/map'),
-    {
-      loading: () => <div className="h-full w-full bg-card rounded-2xl flex items-center justify-center text-white/40 border border-white/5 shadow-2xl">Loading Live Map...</div>,
-      ssr: false
-    }
-  ), []);
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("@/components/ui/map"), {
+        loading: () => (
+          <div className="h-full w-full bg-card rounded-2xl flex items-center justify-center text-white/40 border border-white/5 shadow-2xl">
+            Loading Live Map...
+          </div>
+        ),
+        ssr: false,
+      }),
+    []
+  );
 
   return (
-    <div className="dark flex min-h-screen bg-background font-sans relative overflow-hidden text-white selection:bg-primary/30">
-
-
+    <div
+      className={`${montserrat.className} dark flex min-h-screen bg-background font-sans relative overflow-hidden text-white selection:bg-primary/30`}
+    >
       <main className="flex-1 w-full">
-
         {/* Navbar */}
-        <header className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <header className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-4">
           <div className="flex items-center gap-4">
-            <button className="md:hidden text-white/70 hover:text-white p-2 bg-card rounded-lg">
+            <button
+              className="md:hidden text-white/70 hover:text-white p-2 bg-card rounded-lg"
+              aria-label="Open menu"
+            >
               <Menu size={20} />
             </button>
+
             <div>
-              {/* <div className="text-white/50 text-xs mb-1 font-bold tracking-wide"><span className="opacity-60">Pages</span> / Dashboard</div> */}
               <h2 className="text-lg font-bold text-white tracking-wide">Dashboard</h2>
             </div>
           </div>
@@ -45,25 +89,25 @@ export default function Dashboard() {
                 type="text"
                 placeholder="Type here..."
                 className="bg-card border border-white/5 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-primary transition-colors text-white placeholder:text-white/40 w-48 lg:w-64 focus:ring-1 focus:ring-primary shadow-lg"
+                aria-label="Search"
               />
             </div>
+
             <div className="flex items-center gap-4 text-white/70 font-bold ml-2">
-              {/* <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
-                <User size={16} />
-                <span className="text-sm font-bold hidden sm:block mt-0.5">Sign In</span>
-              </div>
-              <button className="hover:text-white transition-colors ml-2"><Settings size={16} /></button>
-              <button className="hover:text-white transition-colors"><Bell size={16} /></button>
+              <button className="hover:text-white transition-colors ml-2" aria-label="Settings">
+                <Settings size={16} />
+              </button>
+              <button className="hover:text-white transition-colors" aria-label="Notifications">
+                <Bell size={16} />
+              </button>
             </div>
           </div>
         </header>
 
-        <div className="flex flex-col gap-6 pb-6">
-
-          {/* Row 1: Stat Cards (Varied Designs) */}
+        <div className="flex flex-col gap-6 pb-6 px-4">
+          {/* Row 1: Stat Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {/* Card 1: Modern Box Icon + Gradient text Layout */}
+            {/* Card 1 */}
             <div className="bg-gradient-to-br from-[#111624] to-[#0A0D18] rounded-[20px] p-6 shadow-2xl border border-white/5 relative overflow-hidden h-[140px] flex flex-col justify-between group cursor-pointer transition-transform hover:-translate-y-1">
               <div className="absolute right-0 top-0 w-32 h-32 bg-[#818cf8]/10 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
               <div className="flex justify-between items-start">
@@ -76,12 +120,14 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className="flex items-center gap-2 mt-2">
-                <span className="text-[#01b574] text-xs font-bold flex items-center"><TrendingUp size={12} className="mr-1" /> +12%</span>
+                <span className="text-[#01b574] text-xs font-bold flex items-center">
+                  <TrendingUp size={12} className="mr-1" /> +12%
+                </span>
                 <span className="text-white/40 text-[11px]">Since last month</span>
               </div>
             </div>
 
-            {/* Card 2: Minimalist Animated Dashboard Dial outline Layout */}
+            {/* Card 2 */}
             <div className="bg-[#111624] rounded-[20px] p-6 shadow-2xl border border-white/5 relative overflow-hidden h-[140px] flex flex-col justify-between group cursor-pointer transition-transform hover:-translate-y-1">
               <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-32 h-32 bg-[#fbbf24]/5 blur-3xl rounded-full pointer-events-none"></div>
               <div className="flex items-center gap-4 relative z-10 w-full h-full">
@@ -99,7 +145,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Card 3: Centered Glassmorphism Focus Layout */}
+            {/* Card 3 */}
             <div className="bg-card/40 backdrop-blur-md rounded-[20px] p-6 shadow-2xl border-t border-l border-white/10 border-b-transparent border-r-transparent relative overflow-hidden h-[140px] flex flex-col justify-center items-center text-center group cursor-pointer transition-transform hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-b from-[#0ea5e9]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-2 group-hover:-translate-y-1 transition-transform duration-300 border border-white/10 shadow-lg relative">
@@ -110,7 +156,7 @@ export default function Dashboard() {
               <p className="text-[#0ea5e9] text-[11px] font-bold tracking-wider uppercase">Verified Staff/Admin</p>
             </div>
 
-            {/* Card 4: Background Data Visualizer Layout */}
+            {/* Card 4 */}
             <div className="bg-gradient-to-r from-[#111624] to-[#151c3a] rounded-[20px] px-5 py-4 shadow-2xl border border-white/5 relative overflow-hidden h-[140px] flex flex-col justify-between cursor-pointer transition-transform hover:-translate-y-1">
               <p className="text-white/50 text-[11px] font-bold tracking-widest uppercase text-center relative z-10">Registered Users</p>
               <div className="flex items-center justify-center flex-1 w-full gap-4 mt-1 relative z-10">
@@ -121,7 +167,6 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Subtle bar chart background */}
               <div className="absolute bottom-0 left-0 right-0 h-10 flex items-end justify-center gap-[3px] px-4 opacity-15 pointer-events-none">
                 <div className="w-full max-w-[8px] h-[30%] bg-[#10b981] rounded-t-sm"></div>
                 <div className="w-full max-w-[8px] h-[50%] bg-[#10b981] rounded-t-sm"></div>
@@ -136,17 +181,18 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Row 4: Live Map integration & Orders Overview */}
+          {/* Row 4: Live Map & History */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[600px]">
-
-            {/* Live Map Integrated into the Projects table area */}
+            {/* Live Map */}
             <div className="lg:col-span-8 bg-card rounded-2xl p-6 shadow-2xl border border-white/5 flex flex-col">
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <h3 className="font-bold text-lg tracking-wide">Live Monitoring Map</h3>
-                  <p className="text-white/50 text-xs font-bold tracking-wide flex items-center gap-1.5 mt-2"><CheckCircle2 size={14} className="text-[#01b574]" /> <span className="text-[#01b574]">30 done</span> this month</p>
+                  <p className="text-white/50 text-xs font-bold tracking-wide flex items-center gap-1.5 mt-2">
+                    <CheckCircle2 size={14} className="text-[#01b574]" /> <span className="text-[#01b574]">30 done</span> this month
+                  </p>
                 </div>
-                <button className="bg-white/5 p-2 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                <button className="bg-white/5 p-2 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" aria-label="More">
                   <MoreHorizontal size={18} className="text-white" />
                 </button>
               </div>
@@ -154,101 +200,54 @@ export default function Dashboard() {
               <div className="flex-1 w-full rounded-xl overflow-hidden relative border border-white/5 shadow-inner bg-[#111936]">
                 <Map posix={[8.4772, 124.6459]} />
 
-                {/* Floating UI on Map specifically restyled for Vision UI */}
                 <div className="absolute top-4 right-4 flex flex-col gap-2 z-[400]">
                   <div className="bg-card/90 backdrop-blur-md p-1.5 rounded-xl border border-white/10 flex flex-col gap-1 shadow-2xl">
-                    <button className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium">+</button>
+                    <button className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium" aria-label="Zoom in">+</button>
                     <div className="h-[1px] w-full bg-white/10" />
-                    <button className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium">-</button>
+                    <button className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium" aria-label="Zoom out">-</button>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Orders Overview */}
+            {/* History Overview */}
             <div className="lg:col-span-4 bg-card rounded-2xl p-6 shadow-2xl border border-white/5 relative flex flex-col pt-8">
               <h3 className="font-bold text-lg tracking-wide">History Overview</h3>
               <p className="text-white/50 text-sm font-bold mt-2 mb-10 tracking-wide"><span className="text-[#01b574]"></span> this month</p>
 
-    {/* History Overview */}
+              <div className="relative flex-1 mt-2 px-2">
+                {/* Location Update */}
+                <div className="flex gap-5 mb-8">
+                  <div className="flex flex-col items-center relative">
+                    <div className="w-2.5 h-2.5 rounded-full border-2 border-teal-500 bg-transparent z-10 mt-1"></div>
+                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
+                  </div>
+                  <div className="pb-1 mt-[-2px]">
+                    <p className="text-sm font-bold text-white/90">Location updated – Cagayan de Oro City</p>
+                    <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">Today 2:15 PM</p>
+                  </div>
+                </div>
 
-    <div className="relative flex-1 mt-2 px-2">
+                {/* Emergency Alert */}
+                <div className="flex gap-5 mb-8">
+                  <div className="flex flex-col items-center relative">
+                    <div className="w-2.5 h-2.5 rounded-full border-2 border-red-500 bg-transparent z-10 mt-1"></div>
+                    <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
+                  </div>
+                  <div className="pb-1 mt-[-2px]">
+                    <p className="text-sm font-bold text-red-400">Emergency button activated</p>
+                    <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">Yesterday 6:42 PM</p>
+                  </div>
+                </div>
+              </div>
 
-     {/* Location Update */}
-      <div className="flex gap-5 mb-8">
-      <div className="flex flex-col items-center relative">
-      <div className="w-2.5 h-2.5 rounded-full border-2 border-teal-500 bg-transparent z-10 mt-1"></div>
-      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-    </div>
-    <div className="pb-1 mt-[-2px]">
-      <p className="text-sm font-bold text-white/90">
-        Location updated – Cagayan de Oro City
-      </p>
-      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
-        Today 2:15 PM
-      </p>
-    </div>
-  </div>
-
-  {/* Emergency Alert */}
-  <div className="flex gap-5 mb-8">
-    <div className="flex flex-col items-center relative">
-      <div className="w-2.5 h-2.5 rounded-full border-2 border-red-500 bg-transparent z-10 mt-1"></div>
-      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-    </div>
-    <div className="pb-1 mt-[-2px]">
-      <p className="text-sm font-bold text-red-400">
-        Emergency button activated
-      </p>
-      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
-        Yesterday 6:42 PM
-      </p>
-    </div>
-  </div>
-
-  {/* Device Status */}
-  {/* <div className="flex gap-5 mb-8">
-    <div className="flex flex-col items-center relative">
-      <div className="w-2.5 h-2.5 rounded-full border-2 border-yellow-400 bg-transparent z-10 mt-1"></div>
-      <div className="w-[2px] h-full bg-white/5 absolute top-2 -bottom-8"></div>
-    </div>
-    <div className="pb-1 mt-[-2px]">
-      <p className="text-sm font-bold text-white/90">
-        Device battery low (15%)
-      </p>
-      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
-        Dec 1 4:10 PM
-      </p>
-    </div>
-  </div> */}
-
-  {/* Device Offline */}
-  {/* <div className="flex gap-5">
-    <div className="flex flex-col items-center relative">
-      <div className="w-2.5 h-2.5 rounded-full border-2 border-gray-400 bg-transparent z-10 mt-1"></div>
-    </div>
-    <div className="pb-1 mt-[-2px]">
-      <p className="text-sm font-bold text-white/90">
-        Device went offline
-      </p>
-      <p className="text-[10px] text-white/50 font-bold mt-2 uppercase">
-        Nov 30 11:35 PM
-      </p>
-    </div>
-  </div> */}
-
-</div>
-
-              {/* Fade out bottom overlay */}
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card to-transparent pointer-events-none"></div>
             </div>
           </div>
 
           <footer className="w-full flex justify-between items-center text-xs text-white/40 pb-2 pt-6 px-2 font-bold tracking-wide">
             <p>© SmartGuide IoT</p>
-
           </footer>
-
         </div>
       </main>
     </div>
