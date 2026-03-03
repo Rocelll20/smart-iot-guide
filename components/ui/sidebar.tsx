@@ -8,7 +8,8 @@ import {
   Settings,
   LogOut,
   Circle,
-  UserStar
+  UserStar,
+  Cpu
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,6 +23,7 @@ const Sidebar = () => {
     { icon: <LayoutDashboard size={18} />, label: 'Dashboard', href: '/dashboard' },
     { icon: <AlertCircle size={18} />, label: 'Emergency', href: '/dashboard/emergency' },
     { icon: <UserStar size={18} />, label: 'Active Users', href: '/dashboard/active-users' },
+    { icon: <Cpu size={18} />, label: 'Devices', href: '/dashboard/devices' },
   ];
 
   const accountItems = [
